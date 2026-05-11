@@ -1318,30 +1318,7 @@ chForm.onsubmit = function(e) {
     document.getElementById('checkoutModal').classList.remove('active');
     chForm.reset(); // Скидаємо форму для наступного разу
 };
-async def sendOrderToTelegram(orderData) {
-    const token = '8595348907:AAHWGDfoToMOHrGJtQgpRvquYeORdd6hcXM';
-    const adminChatId = '5716166160'; // Твій числовий ID (дізнайся в @userinfobot)
 
-    let message = `<b>🔔 НОВЕ ЗАМОВЛЕННЯ!</b>\n\n`;
-    message += `👤 Клієнт: ${orderData.name}\n`;
-    message += `📞 Тел: ${orderData.phone}\n`;
-    message += `✈️ TG: ${orderData.tg}\n`;
-    message += `💳 Оплата: ${orderData.method}\n\n`;
-    message += `📦 Товари:\n${orderData.itemsText}\n\n`;
-    message += `💰 <b>Сума: ${orderData.total}</b>`;
-
-    const url = `https://api.telegram.org/bot${token}/sendMessage`;
-
-    await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: adminChatId,
-            text: message,
-            parse_mode: 'HTML'
-        })
-    });
-}
     </script>
 </body>
 </html>
